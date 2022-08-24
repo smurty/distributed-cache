@@ -2,8 +2,11 @@ package com.smurty.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
+
 //import org.springframework.context.annotation.Profile;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -14,8 +17,10 @@ import com.amazonaws.services.dynamodbv2.datamodeling.ConversionSchemas;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
+//@ComponentScan({  })
 public class DynamoDbConfiguration {
   @Value("${aws.dynamo.endpoint}")
   private String endPoint;
@@ -28,6 +33,8 @@ public class DynamoDbConfiguration {
 
   @Value("${aws.cloud.secretKey}")
   private String secretKey;
+  
+  private static final ObjectMapper objectMapper = new ObjectMapper();
 
   @Bean
   @Primary
@@ -45,6 +52,15 @@ public class DynamoDbConfiguration {
     return buildAmazonDynamoDB();
   }
 
+  @Bean
+  public ObjectMapper objectMapper() {
+	  return objectMapper;
+  }
+  
+//  @Bean
+//  public PartnerProfileDataHelper partnerProfilesDataHelper() {
+//	  return new PartnerProfileDataHelper();
+//  }
   
   
   private AmazonDynamoDB buildAmazonDynamoDB() {
@@ -72,3 +88,13 @@ public class DynamoDbConfiguration {
 //  }
 
 }
+
+//@ComponentScan({
+//"com.fasterxml.jackson.databind", 
+//"com.amazonaws.services.dynamodbv2.datamodeling", 
+//"com.amazonaws.services.dynamodbv2.document", 
+//"com.amazonaws.services.dynamodbv2", 
+//"com.smurty.model.partnerProfile",
+//"cache.embedded.rest",
+//"com.smurty.rest",
+//"com.smurty.service"})

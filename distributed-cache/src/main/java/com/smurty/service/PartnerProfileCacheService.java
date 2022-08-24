@@ -6,41 +6,39 @@ import com.hazelcast.config.SerializerConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
-import com.smurty.model.partnerProfile.PartnerProfileItem;
-import com.smurty.model.partnerProfile.PartnerProfileItemHelper;
+import com.smurty.model.partnerProfile.PartnerProfileData;
+import com.smurty.model.partnerProfile.PartnerProfileDataHelper;
 
 import cache.embedded.rest.Car;
 import cache.embedded.serializer.CarSerializer;
-
-import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CacheService {
+public class PartnerProfileCacheService {
 
     public static final String PARTNERPROFILE_CACHE = "partnerProfileCache";
     private final HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance(createConfig());
     
     @Autowired
-    private PartnerProfileItemHelper ppHelper;
+    private PartnerProfileDataHelper ppHelper;
 
-    public PartnerProfileItem put(String userID, PartnerProfileItem ppItem){
-        IMap<String, PartnerProfileItem> map = hazelcastInstance.getMap(PARTNERPROFILE_CACHE);
+    public PartnerProfileData put(String userID, PartnerProfileData ppItem){
+        IMap<String, PartnerProfileData> map = hazelcastInstance.getMap(PARTNERPROFILE_CACHE);
         return map.put(userID, ppItem);
     }
 
-    public PartnerProfileItem get(String userID){
-        IMap<String, PartnerProfileItem> map = hazelcastInstance.getMap(PARTNERPROFILE_CACHE);
-        return map.computeIfAbsent(userID, (aUserID) -> ppHelper.load(aUserID));
+    public PartnerProfileData get(String userID){
+        IMap<String, PartnerProfileData> map = hazelcastInstance.getMap(PARTNERPROFILE_CACHE);
+        return map.computeIfAbsent(userID, (userid) -> ppHelper.load(userid));
     }
     
 
     public Config createConfig() {
         Config config = new Config();
         config.addMapConfig(mapConfig());
-        config.getSerializationConfig().addSerializerConfig(serializerConfig());
+//        config.getSerializationConfig().addSerializerConfig(serializerConfig());
         return config;
     }
 

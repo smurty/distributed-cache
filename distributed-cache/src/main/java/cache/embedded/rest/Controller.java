@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import cache.embedded.CacheClient;
 
-@RestController
+@RestController("thomberg")
 @RequestMapping(path = "/cars")
 public class Controller {
 

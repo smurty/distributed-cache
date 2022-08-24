@@ -16,14 +16,14 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
  *
  */
 @Configuration
-public class PartnerProfileItemHelper {
+public class PartnerProfileDataHelper {
 	
 	private static final Logger log = LogManager.getLogger();
 	
 	@Autowired
 	private DynamoDBMapper dbMapper;
 
-	public PartnerProfileItemHelper() {
+	public PartnerProfileDataHelper() {
 
 	}
 	
@@ -31,16 +31,14 @@ public class PartnerProfileItemHelper {
 	 * @param userID
 	 * @return
 	 */
-	@Bean
-	public PartnerProfileItem load(String userID) {
-		return dbMapper.load(PartnerProfileItem.class, userID);
+	public PartnerProfileData load(String userID) {
+		return dbMapper.load(PartnerProfileData.class, userID);
 	}
 	
 	/**
 	 * @param item
 	 */
-	@Bean
-	public void save(PartnerProfileItem item) {
+	public void save(PartnerProfileData item) {
 		dbMapper.save(item);
 	}
 	
