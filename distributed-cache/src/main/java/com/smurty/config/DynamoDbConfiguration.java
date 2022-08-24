@@ -57,12 +57,6 @@ public class DynamoDbConfiguration {
 	  return objectMapper;
   }
   
-//  @Bean
-//  public PartnerProfileDataHelper partnerProfilesDataHelper() {
-//	  return new PartnerProfileDataHelper();
-//  }
-  
-  
   private AmazonDynamoDB buildAmazonDynamoDB() {
     return AmazonDynamoDBClientBuilder.standard()
         .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endPoint, region))
@@ -88,13 +82,3 @@ public class DynamoDbConfiguration {
 //  }
 
 }
-
-//@ComponentScan({
-//"com.fasterxml.jackson.databind", 
-//"com.amazonaws.services.dynamodbv2.datamodeling", 
-//"com.amazonaws.services.dynamodbv2.document", 
-//"com.amazonaws.services.dynamodbv2", 
-//"com.smurty.model.partnerProfile",
-//"cache.embedded.rest",
-//"com.smurty.rest",
-//"com.smurty.service"})

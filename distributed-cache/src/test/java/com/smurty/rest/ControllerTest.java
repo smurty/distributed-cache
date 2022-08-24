@@ -29,13 +29,48 @@ class ControllerTest {
 //    @Autowired(required=true)
     private ObjectMapper objectMapper = new ObjectMapper();
     
+    final String userID = "0ec0c2f3-f1e4-4ac0-91fc-55c8a7442f95";
 
     @Test
     void get() throws Exception {
-        // given
-        String userID = "0ec0c2f3-f1e4-4ac0-91fc-55c8a7442f95";
         
-        PartnerProfileData ppDataExpected = 
+        PartnerProfileData ppDataExpected = getPartnerProfile(userID);
+
+        // GET
+        String json = mockMvc
+        				.perform(MockMvcRequestBuilders.get("/partnerProfiles/" + userID))
+        				.andExpect(status().isOk())
+        				.andReturn()
+        				.getResponse()
+        				.getContentAsString();
+        
+        PartnerProfileData response = objectMapper.readValue(json, PartnerProfileData.class);
+
+        assertThat(response).isEqualToComparingFieldByField(ppDataExpected);
+
+    }
+    
+    @Test
+    void put() throws Exception {
+    	
+    	PartnerProfileData ppData = getPartnerProfile(userID);
+    	
+    	// CHANGE
+    	ppData.getApiAccessSettings().setAccountsIgnoreBuyingPower(false);
+    	ppData.getApiAccessSettings().setUsersCredentialsOptional(false);
+
+    	String content = objectMapper.writeValueAsString(ppData);
+    	
+    	mockMvc
+    		.perform(post("/partnerProfiles")
+    					.content(content)
+    					.contentType(MediaType.APPLICATION_JSON_VALUE)
+    		)
+    		.andExpect(status().isCreated());
+    }
+    
+    private PartnerProfileData getPartnerProfile(String userID) {
+        PartnerProfileData ppData = 
         		PartnerProfileData.builder()
         			.userID(userID)
         			.active(true)
@@ -54,26 +89,7 @@ class ControllerTest {
         			.type("RIA")
         			.wlpID("MARY")
         			.build();
-
-//        // put
-//        String content = objectMapper.writeValueAsString(car);
-//        mockMvc.perform(
-//                post("/cars")
-//                        .content(content)
-//                .contentType(MediaType.APPLICATION_JSON_VALUE)
-//        ).andExpect(status().isCreated());
-
-        // get
-        String json = mockMvc
-        				.perform(MockMvcRequestBuilders.get("/partnerProfiles/" + userID))
-        				.andExpect(status().isOk())
-        				.andReturn()
-        				.getResponse()
-        				.getContentAsString();
         
-        PartnerProfileData response = objectMapper.readValue(json, PartnerProfileData.class);
-
-        assertThat(response).isEqualToComparingFieldByField(ppDataExpected);
-
-    } // .perform(get("/partnerProfiles/" + userID))
+        return ppData;
+    }
 }

@@ -18,5 +18,3 @@ public class HazelcastEmbeddedCacheApplication {
     }
 
 }
-
-//		"cache.embedded",
