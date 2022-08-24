@@ -20,7 +20,7 @@ public class CacheClient {
 
     public Car put(String number, Car car){
         IMap<String, Car> map = hazelcastInstance.getMap(CARS);
-        return map.putIfAbsent(number, car);
+        return map.put(number, car);
     }
 
     public Car get(String key){
@@ -44,7 +44,7 @@ public class CacheClient {
     private MapConfig mapConfig() {
         MapConfig mapConfig = new MapConfig(CARS);
         mapConfig.setTimeToLiveSeconds(360);
-        mapConfig.setMaxIdleSeconds(20);
+        mapConfig.setMaxIdleSeconds(360);
         mapConfig.setPerEntryStatsEnabled(true);
         return mapConfig;
     }

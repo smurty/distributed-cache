@@ -11,6 +11,10 @@
 	<groupId>hackathon</groupId>
 	<artifactId>embedded-cache</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
+	<properties>
+		<aws-java-sdk.version>1.12.286</aws-java-sdk.version>
+	</properties>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-cache -->
@@ -50,12 +54,24 @@
 			<!-- <version>2.7.3</version> -->
 		</dependency>
 
+		<!-- AWS -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-dynamodb</artifactId>
+			<version>${aws-java-sdk.version}</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- to use DynamoDB with SpringBoot can use a user contrib module
+		See https://www.baeldung.com/spring-data-dynamodb
+		--> 
+		
 	</dependencies>
 
 	<build>

@@ -39,7 +39,7 @@ class ControllerTest {
         // put
         String content = objectMapper.writeValueAsString(car);
         mockMvc.perform(
-                post("/cars/" + number)
+                post("/cars")
                         .content(content)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
         ).andExpect(status().isCreated());

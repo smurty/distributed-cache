@@ -17,10 +17,10 @@ public class Controller {
         this.cacheClient = cacheClient;
     }
 
-    @PostMapping(path = "/{number}", produces= MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(produces= MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Car put(@RequestBody Car car, @PathVariable String number) {
-        return cacheClient.put(number, car);
+    public Car put(@RequestBody Car car) {
+        return cacheClient.put(car.getNumber(), car);
     }
 
     @GetMapping(value = "/{number}", produces = MediaType.APPLICATION_JSON_VALUE)
