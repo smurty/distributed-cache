@@ -25,13 +25,13 @@ public class DynamoDbConfiguration {
   @Value("${aws.dynamo.endpoint}")
   private String endPoint;
 
-  @Value("${aws.cloud.region}")
+  @Value("${aws.region}")
   private String region;
 
-  @Value("${aws.cloud.accessKey}")
+  @Value("${aws.accessKey}")
   private String accessKey;
 
-  @Value("${aws.cloud.secretKey}")
+  @Value("${aws.secretKey}")
   private String secretKey;
   
   private static final ObjectMapper objectMapper = new ObjectMapper();

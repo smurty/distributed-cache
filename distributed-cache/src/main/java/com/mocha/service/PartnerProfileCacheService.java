@@ -42,11 +42,11 @@ public class PartnerProfileCacheService {
         return config;
     }
 
-    private SerializerConfig serializerConfig() {
-        return  new SerializerConfig()
-                .setImplementation(new CarSerializer())
-                .setTypeClass(Car.class);
-    }
+//    private SerializerConfig serializerConfig() {
+//        return  new SerializerConfig()
+//                .setImplementation(new PartnerProfilesSerializer())
+//                .setTypeClass(Car.class);
+//    }
 
     private MapConfig mapConfig() {
         MapConfig mapConfig = new MapConfig(PARTNERPROFILE_CACHE);

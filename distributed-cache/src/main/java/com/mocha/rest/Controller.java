@@ -1,5 +1,6 @@
 package com.mocha.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import com.mocha.service.PartnerProfileCacheService;
 @RequestMapping(path = "/partnerProfiles")
 public class Controller {
 
+	@Autowired
     private final PartnerProfileCacheService cacheService;
 
     public Controller(PartnerProfileCacheService cacheClient) {
