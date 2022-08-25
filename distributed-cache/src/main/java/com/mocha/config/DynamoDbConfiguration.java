@@ -1,4 +1,4 @@
-package com.smurty.config;
+package com.mocha.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

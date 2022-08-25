@@ -6,10 +6,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages= {
-		"com.smurty.rest",
-		"com.smurty.service",
-		"com.smurty.model.partnerProfile",
-		"com.smurty.config"
+		"com.mocha.rest",
+		"com.mocha.service",
+		"com.mocha.model.partnerProfile",
+		"com.mocha.config"
 })
 public class HazelcastEmbeddedCacheApplication {
 

@@ -1,7 +1,7 @@
-package com.smurty.rest;
+package com.mocha.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.smurty.model.partnerProfile.PartnerProfileData;
+import com.mocha.model.partnerProfile.PartnerProfileData;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

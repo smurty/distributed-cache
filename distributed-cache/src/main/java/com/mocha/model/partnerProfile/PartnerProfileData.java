@@ -1,6 +1,6 @@
-package com.smurty.model.partnerProfile;
+package com.mocha.model.partnerProfile;
 
-import static com.smurty.model.partnerProfile.PartnerProfileConstants.*;
+import static com.mocha.model.partnerProfile.PartnerProfileConstants.*;
 
 import java.io.Serializable;
 

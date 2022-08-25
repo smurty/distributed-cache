@@ -1,4 +1,4 @@
-package com.smurty.model.partnerProfile;
+package com.mocha.model.partnerProfile;
 
 //import static com.smurty.model.partnerProfile.PartnerProfileConstants.*;
 

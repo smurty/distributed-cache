@@ -1,4 +1,4 @@
-package com.smurty.model.partnerProfile;
+package com.mocha.model.partnerProfile;
 
 /**
  * Use this class as a static import This file could be used to define all field

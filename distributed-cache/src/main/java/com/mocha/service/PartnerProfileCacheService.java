@@ -1,4 +1,4 @@
-package com.smurty.service;
+package com.mocha.service;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.MapConfig;
@@ -6,8 +6,8 @@ import com.hazelcast.config.SerializerConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
-import com.smurty.model.partnerProfile.PartnerProfileData;
-import com.smurty.model.partnerProfile.PartnerProfileDataHelper;
+import com.mocha.model.partnerProfile.PartnerProfileData;
+import com.mocha.model.partnerProfile.PartnerProfileDataHelper;
 
 import cache.embedded.rest.Car;
 import cache.embedded.serializer.CarSerializer;

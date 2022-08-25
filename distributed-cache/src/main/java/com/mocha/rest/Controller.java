@@ -1,11 +1,11 @@
-package com.smurty.rest;
+package com.mocha.rest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import com.smurty.model.partnerProfile.PartnerProfileData;
-import com.smurty.service.PartnerProfileCacheService;
+import com.mocha.model.partnerProfile.PartnerProfileData;
+import com.mocha.service.PartnerProfileCacheService;
 
 @RestController("drivewealth")
 @RequestMapping(path = "/partnerProfiles")
