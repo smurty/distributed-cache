@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 //import org.springframework.context.annotation.Profile;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
@@ -27,12 +28,6 @@ public class DynamoDbConfiguration {
 
   @Value("${aws.region}")
   private String region;
-
-  @Value("${aws.accessKey}")
-  private String accessKey;
-
-  @Value("${aws.secretKey}")
-  private String secretKey;
   
   private static final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -58,11 +53,11 @@ public class DynamoDbConfiguration {
   }
   
   private AmazonDynamoDB buildAmazonDynamoDB() {
-    return AmazonDynamoDBClientBuilder.standard()
-        .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endPoint, region))
-        .withCredentials(
-            new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
-        .build();
+    return AmazonDynamoDBClientBuilder
+    		.standard()
+    		.withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endPoint, region))
+    		.withCredentials(new DefaultAWSCredentialsProviderChain())
+    		.build();
   }
   
   private DynamoDBMapperConfig buildAmazonDynamoDBMapperConfig() {
