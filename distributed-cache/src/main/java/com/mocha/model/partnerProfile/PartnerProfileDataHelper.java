@@ -5,27 +5,17 @@ package com.mocha.model.partnerProfile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 
-
-/**
- * @author smurty
- *
- */
-@Configuration
+@Service
 public class PartnerProfileDataHelper {
 	
 	private static final Logger log = LogManager.getLogger();
 	
 	@Autowired
 	private DynamoDBMapper dbMapper;
-
-	public PartnerProfileDataHelper() {
-
-	}
 	
 	/**
 	 * @param userID

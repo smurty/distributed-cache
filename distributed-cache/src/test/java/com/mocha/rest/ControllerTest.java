@@ -25,9 +25,9 @@ class ControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-//    @Autowired(required=true)
-    private ObjectMapper objectMapper = new ObjectMapper();
+    
+    @Autowired
+    private ObjectMapper objectMapper;
     
     final String userID = "0ec0c2f3-f1e4-4ac0-91fc-55c8a7442f95";
 

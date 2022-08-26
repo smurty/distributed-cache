@@ -13,11 +13,7 @@ import com.mocha.service.PartnerProfileCacheService;
 public class Controller {
 
 	@Autowired
-    private final PartnerProfileCacheService cacheService;
-
-    public Controller(PartnerProfileCacheService cacheClient) {
-        this.cacheService = cacheClient;
-    }
+    private PartnerProfileCacheService cacheService;
 
     @PostMapping(produces= MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.CREATED)

@@ -9,9 +9,6 @@ import com.hazelcast.map.IMap;
 import com.mocha.model.partnerProfile.PartnerProfileData;
 import com.mocha.model.partnerProfile.PartnerProfileDataHelper;
 
-import cache.embedded.rest.Car;
-import cache.embedded.serializer.CarSerializer;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
